@@ -46,72 +46,78 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Montserrat', sans-serif;
             color: #042321;
-            line-height: 1.6;
             background: #fff;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
         }
 
-        /* ========== HERO ========== */
+        /* ========================================
+           HERO SECTION
+           ======================================== */
         .hero {
+            position: relative;
             background-color: #042321;
             background-image: url('img/group-194.png');
             background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
-            position: relative;
-        }
-
-        .hero-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            align-items: stretch;
-        }
-
-        .hero-content {
-            width: 58%;
+            min-height: 547px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 40px 0;
+            padding-bottom: 140px; /* room for table overlap */
         }
 
-        .hero-content-inner {
-            width: 75%;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        /* Logo bar — clean, no background pattern */
+        .hero-logo-bar {
+            width: 100%;
+            max-width: 1280px;
+            padding: 30px 40px 0;
         }
 
-        .hero-logo {
-            margin-bottom: 10px;
-        }
-
-        .hero-logo img {
-            width: 55%;
+        .hero-logo-bar img {
+            width: 220px;
             height: auto;
         }
 
+        /* Hero two-column layout */
+        .hero-row {
+            width: 100%;
+            max-width: 1280px;
+            display: flex;
+            align-items: stretch;
+            padding: 0 40px;
+            margin-top: 20px;
+        }
+
+        .hero-left {
+            width: 58%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 0;
+        }
+
         .hero h1 {
-            font-family: 'Montserrat', sans-serif;
             font-size: 46px;
             font-weight: 900;
             text-transform: uppercase;
-            color: #FFFFFF;
+            color: #fff;
             line-height: 1.1;
         }
 
         .hero-subtitle {
-            font-family: 'Montserrat', sans-serif;
             font-size: 18px;
             font-weight: 400;
-            color: #FFFFFF;
+            color: #fff;
             max-width: 74%;
             line-height: 1.5;
         }
@@ -120,6 +126,7 @@
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 5px;
+            max-width: 400px;
         }
 
         .app-logos img {
@@ -129,24 +136,10 @@
             object-fit: contain;
         }
 
-        .hero-photo {
-            width: 42%;
-            position: relative;
-        }
-
-        .hero-photo-img {
-            min-height: 342px;
-            border-radius: 60px;
-            background-image: url('img/frame-hero.png');
-            background-position: center center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            margin-bottom: -34px;
-        }
-
         .cta-btn {
             display: block;
             width: 85%;
+            max-width: 460px;
             background-color: #61CE70;
             color: #042321;
             font-family: 'Montserrat', sans-serif;
@@ -160,7 +153,7 @@
             border: 1px solid #4E0303;
             box-shadow: 9px 7px 11px 0px rgba(0,0,0,0.5);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s, transform 0.2s;
         }
 
         .cta-btn:hover {
@@ -168,31 +161,56 @@
             transform: translateY(-2px);
         }
 
-        /* ========== VALORES ========== */
+        /* Hero photo */
+        .hero-right {
+            width: 42%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 0;
+        }
+
+        .hero-photo {
+            width: 100%;
+            min-height: 342px;
+            border-radius: 60px;
+            background-image: url('img/frame-hero.png');
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin-bottom: -34px; /* slight bleed past hero */
+        }
+
+        /* ========================================
+           VALORES SECTION (overlaps hero)
+           ======================================== */
         .section-valores {
+            position: relative;
+            z-index: 3;
             max-width: 1280px;
-            margin: 0 auto;
+            margin: -200px auto 0; /* pull up into hero */
             display: flex;
             align-items: center;
             gap: 40px;
+            padding: 0 40px;
         }
 
         .valores-left {
             width: 50%;
-            padding: 60px 0 60px 60px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 24px;
+            padding: 60px 0;
         }
 
         .valores-left h2 {
-            font-family: 'Montserrat', sans-serif;
             font-size: 24px;
             font-weight: 700;
             color: #042321;
             line-height: 1.3;
         }
 
+        /* Badges grid */
         .badges {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -207,43 +225,34 @@
             background-color: #007256;
             border-radius: 9px;
             padding: 12px 10px;
-            color: #FFFFFF;
-            font-family: 'Montserrat', sans-serif;
+            color: #fff;
             font-size: 14px;
             font-weight: 500;
             text-align: center;
+            white-space: nowrap;
         }
 
-        .badge-icon {
-            color: #00C83C;
-            font-size: 18px;
-            line-height: 1;
-            flex-shrink: 0;
-        }
-
-        .badge-icon svg {
+        .badge svg {
             width: 18px;
             height: 18px;
             fill: #00C83C;
+            flex-shrink: 0;
         }
 
+        /* Table column */
         .valores-right {
             width: 50%;
-            margin-top: 0;
-            position: relative;
-            z-index: 3;
-            padding: 0 60px 60px 0;
         }
 
-        /* ========== TABELA ========== */
+        /* ========================================
+           PRICE TABLE
+           ======================================== */
         .price-table {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-template-rows: repeat(5, 1fr);
             border-radius: 20px;
             overflow: hidden;
             border: 1px solid #04523F;
-            min-height: 90px;
         }
 
         .table-header {
@@ -251,25 +260,18 @@
             align-items: center;
             justify-content: center;
             min-height: 90px;
-            background-color: #FFFFFF;
+            background: #fff;
             padding: 20px;
         }
 
         .table-header:first-child {
             border-right: 1px solid #e0e0e0;
-            border-radius: 20px 0 0 0;
-        }
-
-        .table-header:nth-child(2) {
-            border-radius: 0 20px 0 0;
         }
 
         .table-header span {
-            font-family: 'Montserrat', sans-serif;
             font-size: 28px;
             font-weight: 500;
             color: #042321;
-            text-align: center;
         }
 
         .table-cell {
@@ -278,27 +280,10 @@
             justify-content: center;
             min-height: 90px;
             padding: 20px;
-            border-right: 1px solid rgba(255,255,255,0.1);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .table-cell.green-light {
-            background-color: #007256;
-        }
-
-        .table-cell.green-dark {
-            background-color: #04523F;
-        }
-
-        /* Bottom-left corner radius */
-        .table-cell:nth-last-child(2) {
-            border-radius: 0 0 0 20px;
-        }
-
-        /* Bottom-right corner radius */
-        .table-cell:last-child {
-            border-radius: 0 0 20px 0;
-        }
+        .table-cell.gl { background-color: #007256; }
+        .table-cell.gd { background-color: #04523F; }
 
         .cell-content {
             display: flex;
@@ -306,26 +291,20 @@
             gap: 10px;
         }
 
-        .cell-check {
-            flex-shrink: 0;
-        }
-
-        .cell-check svg {
+        .cell-content svg {
             width: 23px;
             height: 23px;
             fill: #00C83C;
+            flex-shrink: 0;
         }
 
         .cell-text {
-            font-family: 'Montserrat', sans-serif;
             font-size: 28px;
             font-weight: 500;
-            color: #FFFFFF;
+            color: #fff;
         }
 
-        /* Rotated labels */
-        .table-label-left {
-            font-family: 'Montserrat', sans-serif;
+        .table-disclaimer {
             font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
@@ -335,74 +314,67 @@
             margin-top: 10px;
         }
 
-        /* ========== DISCLAIMER ========== */
-        .disclaimer-section {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .disclaimer-section h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: #042321;
-            margin-bottom: 10px;
-        }
-
-        /* ========== FOOTER ========== */
+        /* ========================================
+           FOOTER
+           ======================================== */
         .footer {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             padding: 60px 20px 40px;
             text-align: center;
         }
 
-        .footer-logo {
-            width: 30%;
-            max-width: 200px;
+        .footer img {
+            width: 200px;
+            height: auto;
             margin-bottom: 16px;
         }
 
-        .footer-logo img {
-            width: 100%;
-            height: auto;
-        }
-
         .footer p {
-            font-family: 'Montserrat', sans-serif;
             font-size: 14px;
             font-weight: 400;
             color: #042321;
             line-height: 1.8;
         }
 
-        /* ========== MOBILE ========== */
+        .footer .fine-print {
+            margin-top: 8px;
+            font-size: 12px;
+        }
+
+        /* ========================================
+           MOBILE
+           ======================================== */
         @media (max-width: 767px) {
             .hero {
                 background-image: url('img/frame-mobile.png');
                 background-size: cover;
+                min-height: auto;
+                padding-bottom: 40px;
             }
 
-            .hero-inner {
-                flex-direction: column;
+            .hero-logo-bar {
+                padding: 20px 20px 0;
+                text-align: center;
             }
 
-            .hero-content {
-                width: 100%;
-                padding: 30px 0 40px;
-                align-items: center;
-            }
-
-            .hero-logo img {
+            .hero-logo-bar img {
                 width: 60%;
+                max-width: 240px;
             }
 
-            .hero-content-inner {
-                width: 90%;
+            .hero-row {
+                flex-direction: column;
+                padding: 0 20px;
+                margin-top: 10px;
+            }
+
+            .hero-left {
+                width: 100%;
                 align-items: center;
                 text-align: center;
+                padding: 20px 0 30px;
             }
 
             .hero h1 {
@@ -417,34 +389,37 @@
             }
 
             .app-logos {
-                grid-template-columns: repeat(7, 1fr);
-                gap: 5px;
+                max-width: 100%;
             }
 
             .cta-btn {
                 width: 100%;
+                max-width: 100%;
                 border-width: 2px;
             }
 
-            .hero-photo {
+            .hero-right {
                 display: none;
             }
 
+            /* Valores section: no overlap on mobile */
             .section-valores {
+                margin-top: 0;
                 flex-direction: column-reverse;
                 padding: 0 20px;
+                gap: 0;
             }
 
             .valores-left {
                 width: 100%;
                 padding: 30px 0;
                 align-items: center;
+                text-align: center;
             }
 
             .valores-right {
                 width: 100%;
-                margin-top: 0;
-                padding: 30px 0 0 0;
+                padding-top: 30px;
             }
 
             .badges {
@@ -464,15 +439,16 @@
                 font-size: 20px;
             }
 
-            .footer-logo {
+            .footer img {
                 width: 75%;
+                max-width: 280px;
             }
 
             .footer {
-                margin-top: 60px;
+                margin-top: 40px;
             }
 
-            .table-label-left {
+            .table-disclaimer {
                 font-size: 12px;
             }
         }
@@ -482,122 +458,121 @@
 
     <!-- ===== HERO ===== -->
     <section class="hero">
-        <div class="hero-inner">
-            <div class="hero-content">
-                <div class="hero-content-inner">
-                    <div class="hero-logo">
-                        <img src="img/logo-full.svg" alt="Parcela Diaria" loading="eager">
-                    </div>
-                    <h1>Credito rapido para motoristas de app e motoboys</h1>
-                    <p class="hero-subtitle">CREDITO COM PAGAMENTO DIARIO DE SEGUNDA A SABADO! APROVEITE!</p>
-                    <div class="app-logos">
-                        <img src="img/app-uber.png" alt="Uber" loading="lazy">
-                        <img src="img/app-99.png" alt="99" loading="lazy">
-                        <img src="img/app-id.png" alt="inDriver" loading="lazy">
-                        <img src="img/app-cabify.png" alt="Cabify" loading="lazy">
-                        <img src="img/app-lady.png" alt="Lady Driver" loading="lazy">
-                        <img src="img/app-rappi.png" alt="Rappi" loading="lazy">
-                        <img src="img/app-ifood.png" alt="iFood" loading="lazy">
-                    </div>
-                    <a href="https://parceladiaria.com.br/campanha/349" class="cta-btn" id="cta-hero" onclick="trackCTA('hero')">Fazer Cadastro</a>
+        <div class="hero-logo-bar">
+            <img src="img/logo-full.svg" alt="Parcela Diaria" loading="eager">
+        </div>
+
+        <div class="hero-row">
+            <div class="hero-left">
+                <h1>Credito rapido para motoristas de app e motoboys</h1>
+                <p class="hero-subtitle">CREDITO COM PAGAMENTO DIARIO DE SEGUNDA A SABADO! APROVEITE!</p>
+                <div class="app-logos">
+                    <img src="img/app-uber.png" alt="Uber" loading="lazy">
+                    <img src="img/app-99.png" alt="99" loading="lazy">
+                    <img src="img/app-id.png" alt="inDriver" loading="lazy">
+                    <img src="img/app-cabify.png" alt="Cabify" loading="lazy">
+                    <img src="img/app-lady.png" alt="Lady Driver" loading="lazy">
+                    <img src="img/app-rappi.png" alt="Rappi" loading="lazy">
+                    <img src="img/app-ifood.png" alt="iFood" loading="lazy">
                 </div>
+                <a href="https://parceladiaria.com.br/campanha/349" class="cta-btn" id="cta-hero" onclick="trackCTA('hero')">Fazer Cadastro</a>
             </div>
-            <div class="hero-photo">
-                <div class="hero-photo-img"></div>
+
+            <div class="hero-right">
+                <div class="hero-photo"></div>
             </div>
         </div>
     </section>
 
-    <!-- ===== VALORES ===== -->
+    <!-- ===== VALORES + TABLE ===== -->
     <section class="section-valores">
         <div class="valores-left">
             <h2>Confira nossa tabela de valores e resolva o que precisa agora.</h2>
             <div class="badges">
                 <div class="badge">
-                    <span class="badge-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
                     Sem Burocracia
                 </div>
                 <div class="badge">
-                    <span class="badge-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
                     100% digital
                 </div>
                 <div class="badge">
-                    <span class="badge-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
                     Liberacao Rapida
                 </div>
             </div>
             <a href="https://parceladiaria.com.br/campanha/349" class="cta-btn" id="cta-main" onclick="trackCTA('main')">Fazer Cadastro</a>
         </div>
+
         <div class="valores-right">
             <div class="price-table">
                 <!-- Header -->
                 <div class="table-header"><span>Valor</span></div>
                 <div class="table-header"><span>26 Diarias</span></div>
-                <!-- Row 1 - #007256 -->
-                <div class="table-cell green-light">
+                <!-- Row 1 -->
+                <div class="table-cell gl">
                     <div class="cell-content">
-                        <span class="cell-check"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
                         <span class="cell-text">R$ 600,00</span>
                     </div>
                 </div>
-                <div class="table-cell green-light">
+                <div class="table-cell gl">
                     <div class="cell-content">
-                        <span class="cell-check"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
                         <span class="cell-text">R$ 30,30</span>
                     </div>
                 </div>
-                <!-- Row 2 - #04523F -->
-                <div class="table-cell green-dark">
+                <!-- Row 2 -->
+                <div class="table-cell gd">
                     <div class="cell-content">
-                        <span class="cell-check"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
                         <span class="cell-text">R$ 900,00</span>
                     </div>
                 </div>
-                <div class="table-cell green-dark">
+                <div class="table-cell gd">
                     <div class="cell-content">
-                        <span class="cell-check"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
                         <span class="cell-text">R$ 45,45</span>
                     </div>
                 </div>
-                <!-- Row 3 - #007256 -->
-                <div class="table-cell green-light">
+                <!-- Row 3 -->
+                <div class="table-cell gl">
                     <div class="cell-content">
-                        <span class="cell-check"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
                         <span class="cell-text">R$ 1.200,00</span>
                     </div>
                 </div>
-                <div class="table-cell green-light">
+                <div class="table-cell gl">
                     <div class="cell-content">
-                        <span class="cell-check"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
                         <span class="cell-text">R$ 60,60</span>
                     </div>
                 </div>
-                <!-- Row 4 - #04523F -->
-                <div class="table-cell green-dark">
+                <!-- Row 4 -->
+                <div class="table-cell gd">
                     <div class="cell-content">
-                        <span class="cell-check"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
                         <span class="cell-text">R$ 1.500,00</span>
                     </div>
                 </div>
-                <div class="table-cell green-dark">
+                <div class="table-cell gd">
                     <div class="cell-content">
-                        <span class="cell-check"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></span>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
                         <span class="cell-text">R$ 75,75</span>
                     </div>
                 </div>
             </div>
-            <p class="table-label-left">Sujeito a analise e condicoes</p>
+            <p class="table-disclaimer">Sujeito a analise e condicoes</p>
         </div>
     </section>
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
-        <div class="footer-logo">
-            <img src="img/logo-full.svg" alt="Parcela Diaria">
-        </div>
+        <img src="img/logo-full.svg" alt="Parcela Diaria">
         <p>Parcela Diaria LTDA &mdash; CNPJ 53.914.707/0001-70</p>
         <p>Todos os direitos reservados.</p>
-        <p style="margin-top: 8px; font-size: 12px;">Emprestimo sujeito a analise de credito. Valores e condicoes podem variar.</p>
+        <p class="fine-print">Emprestimo sujeito a analise de credito. Valores e condicoes podem variar.</p>
     </footer>
 
     <!-- Tracking -->
