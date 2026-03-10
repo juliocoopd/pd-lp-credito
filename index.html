@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcela Diaria - Credito Rapido para Motoristas de App</title>
+    <meta name="description" content="Credito rapido para motoristas de app e motoboys. Parcelas diarias de segunda a sabado. Cadastro em 5 minutos.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231B4D3E'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='20' font-weight='bold' fill='white'>P</text></svg>">
+
+    <!-- Meta Pixel -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1441639751021827');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1441639751021827&ev=PageView&noscript=1"/></noscript>
+
+    <!-- UTM Capture -->
+    <script>
+    (function() {
+        var params = new URLSearchParams(window.location.search);
+        var keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'];
+        keys.forEach(function(k) {
+            var v = params.get(k);
+            if (v) {
+                localStorage.setItem(k, v);
+                document.cookie = k + '=' + encodeURIComponent(v) + ';max-age=2592000;path=/;SameSite=Lax';
+            }
+        });
+        var fbp = document.cookie.match(/_fbp=([^;]+)/);
+        if (fbp) localStorage.setItem('_fbp', fbp[1]);
+    })();
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #1B4D3E;
+            --primary-dark: #143D30;
+            --primary-light: #2A7A60;
+            --accent: #6BBF59;
+            --accent-hover: #5AA84A;
+            --white: #FFFFFF;
+            --gray-50: #F8FAF9;
+            --gray-100: #F0F4F2;
+            --gray-500: #6B7280;
+            --gray-800: #1F2937;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--gray-800);
+            line-height: 1.6;
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* === HERO === */
+        .hero {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 480px;
+        }
+
+        .hero-text {
+            padding: 48px 40px 48px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon span {
+            color: var(--primary);
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .logo-text {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            opacity: 0.85;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.5;
+        }
+
+        .app-logos {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .app-logo {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .app-uber { background: #000; }
+        .app-99 { background: #FFCB37; color: #000; font-size: 1rem; }
+        .app-id { background: #2DCC70; }
+        .app-cabify { background: #7B4FFC; }
+        .app-rappi { background: #FF441F; }
+        .app-lalamove { background: #F5A623; }
+        .app-ifood { background: #EA1D2C; }
+
+        .hero-images {
+            position: relative;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .hero-img-placeholder {
+            flex: 1;
+            background: linear-gradient(135deg, rgba(27,77,62,0.3), rgba(27,77,62,0.6));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        .hero-img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* === TABELA + BENEFICIOS === */
+        .main-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 48px 24px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .left-col {
+            padding-top: 20px;
+        }
+
+        .left-col h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--gray-800);
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        .benefits-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--gray-100);
+            padding: 10px 16px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .badge svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .cta-btn {
+            display: block;
+            width: 100%;
+            max-width: 380px;
+            background: var(--accent);
+            color: var(--white);
+            font-size: 1.15rem;
+            font-weight: 800;
+            padding: 18px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(107, 191, 89, 0.35);
+        }
+
+        /* Tabela */
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+
+        .price-table thead th {
+            background: var(--primary);
+            color: var(--white);
+            padding: 18px 24px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price-table tbody tr:nth-child(odd) {
+            background: var(--primary-light);
+        }
+
+        .price-table tbody tr:nth-child(even) {
+            background: var(--primary);
+        }
+
+        .price-table tbody td {
+            color: var(--white);
+            padding: 20px 24px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .check-value {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .check-icon {
+            width: 22px;
+            height: 22px;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .check-icon svg {
+            width: 12px;
+            height: 12px;
+            color: var(--white);
+        }
+
+        /* === COMO FUNCIONA === */
+        .how-section {
+            background: var(--gray-50);
+            padding: 56px 24px;
+        }
+
+        .how-section h2 {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 40px;
+        }
+
+        .steps {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 16px;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin: 0 auto 14px;
+        }
+
+        .step h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--gray-800);
+        }
+
+        .step p {
+            font-size: 0.82rem;
+            color: var(--gray-500);
+            line-height: 1.4;
+        }
+
+        /* === CTA FINAL === */
+        .cta-final {
+            background: var(--primary);
+            color: var(--white);
+            padding: 52px 24px;
+            text-align: center;
+        }
+
+        .cta-final h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .cta-final p {
+            opacity: 0.85;
+            margin-bottom: 28px;
+            font-size: 1.05rem;
+        }
+
+        .cta-final .cta-btn {
+            margin: 0 auto;
+            max-width: 360px;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: var(--white);
+            padding: 32px 24px;
+            text-align: center;
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .footer-logo .logo-icon {
+            background: var(--primary);
+            width: 36px;
+            height: 36px;
+        }
+
+        .footer-logo .logo-icon span {
+            color: var(--white);
+            font-size: 20px;
+        }
+
+        .footer-logo .logo-text {
+            color: var(--primary);
+            font-size: 1.05rem;
+        }
+
+        footer p {
+            font-size: 0.78rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        footer a {
+            color: var(--gray-500);
+            text-decoration: underline;
+        }
+
+        /* === MOBILE === */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .hero-text {
+                padding: 36px 24px 32px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-images {
+                height: 220px;
+            }
+
+            .main-section {
+                grid-template-columns: 1fr;
+                padding: 36px 20px 32px;
+                gap: 32px;
+            }
+
+            .left-col {
+                padding-top: 0;
+                order: 2;
+            }
+
+            .right-col {
+                order: 1;
+            }
+
+            .price-table thead th {
+                padding: 14px 16px;
+                font-size: 0.95rem;
+            }
+
+            .price-table tbody td {
+                padding: 16px 16px;
+                font-size: 1rem;
+            }
+
+            .cta-btn {
+                max-width: 100%;
+            }
+
+            .steps {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .cta-final h2 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .app-logo {
+                width: 38px;
+                height: 38px;
+                font-size: 0.5rem;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="logo">
+                    <div class="logo-icon"><span>P</span></div>
+                    <span class="logo-text">Parcela Diaria</span>
+                </div>
+                <h1>Credito rapido para motoristas de app e motoboys</h1>
+                <p class="hero-subtitle">Credito com pagamento diario de segunda a sabado! Aproveite!</p>
+                <div class="app-logos">
+                    <div class="app-logo app-uber">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="white"><path d="M12.0002 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12.0002 22C17.5231 22 22 17.5228 22 12C22 6.47715 17.5231 2 12.0002 2ZM8.5 8H10.5V13H15.5V15H8.5V8Z"/></svg>
+                    </div>
+                    <div class="app-logo app-99"><strong>99</strong></div>
+                    <div class="app-logo app-id"><strong>iD</strong></div>
+                    <div class="app-logo app-cabify"><strong>C</strong></div>
+                    <div class="app-logo app-rappi"><strong>R</strong></div>
+                    <div class="app-logo app-lalamove"><strong>L</strong></div>
+                    <div class="app-logo app-ifood"><strong>iF</strong></div>
+                </div>
+            </div>
+            <div class="hero-images">
+                <div class="hero-img-placeholder" style="background: linear-gradient(180deg, #2A7A60 0%, #1B4D3E 100%);">
+                    <svg viewBox="0 0 200 200" width="160" height="160" opacity="0.15" fill="white">
+                        <circle cx="100" cy="60" r="40"/>
+                        <path d="M30 180 C30 120 170 120 170 180"/>
+                        <rect x="70" y="110" width="60" height="30" rx="5"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabela + Beneficios -->
+    <section class="main-section">
+        <div class="left-col">
+            <h2>Confira nossa tabela de valores e resolva o que precisa agora.</h2>
+            <div class="benefits-badges">
+                <span class="badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    Sem Burocracia
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    100% digital
+                </span>
+                <span class="badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    Liberacao Rapida
+                </span>
+            </div>
+            <a href="https://parceladiaria.com.br/campanha/349" class="cta-btn" id="cta-main" onclick="trackCTA('main')">Fazer Cadastro</a>
+        </div>
+        <div class="right-col">
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Valor</th>
+                        <th>26 Diarias</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="check-value"><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span> R$ 600,00</span></td>
+                        <td><span class="check-value"><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span> R$ 30,30</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="check-value"><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span> R$ 900,00</span></td>
+                        <td><span class="check-value"><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span> R$ 45,45</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="check-value"><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span> R$ 1.200,00</span></td>
+                        <td><span class="check-value"><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span> R$ 60,60</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="check-value"><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span> R$ 1.500,00</span></td>
+                        <td><span class="check-value"><span class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span> R$ 75,75</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Como funciona -->
+    <section class="how-section">
+        <h2>Como funciona</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Faca seu cadastro</h3>
+                <p>Preencha seus dados basicos pelo celular.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Analise rapida</h3>
+                <p>Nossa equipe avalia e libera seu credito.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Dinheiro na conta</h3>
+                <p>Aprovado, valor depositado via Pix.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Pague no dia a dia</h3>
+                <p>Parcelas diarias, sem pesar no fim do mes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-final">
+        <h2>Pronto pra rodar sem preocupacao?</h2>
+        <p>Faca seu cadastro agora e descubra seu limite de credito.</p>
+        <a href="https://parceladiaria.com.br/campanha/349" class="cta-btn" id="cta-bottom" onclick="trackCTA('bottom')">Comecar Agora</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <div class="logo-icon"><span>P</span></div>
+            <span class="logo-text">Parcela Diaria</span>
+        </div>
+        <p>&copy; 2026 Parcela Diaria LTDA &mdash; CNPJ 53.914.707/0001-70. Todos os direitos reservados.</p>
+        <p style="margin-top: 8px;">Emprestimo sujeito a analise de credito. Valores e condicoes podem variar.</p>
+        <p style="margin-top: 8px;">
+            <a href="https://parceladiaria.com.br/termos" target="_blank">Termos de uso</a> |
+            <a href="https://parceladiaria.com.br/privacidade" target="_blank">Politica de privacidade</a>
+        </p>
+    </footer>
+
+    <!-- Tracking -->
+    <script>
+    // ViewContent ao carregar LP
+    fbq('track', 'ViewContent', {
+        content_name: 'LP_Credito_Motorista',
+        content_category: 'credito_motorista'
+    });
+
+    // Tracker de CTA
+    function trackCTA(position) {
+        var eventId = 'lp_lead_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+
+        // Lead event no Pixel
+        fbq('track', 'Lead', {
+            content_name: 'CTA_LP_' + position,
+            content_category: 'credito_motorista'
+        }, { eventID: eventId });
+
+        localStorage.setItem('last_event_id', eventId);
+
+        // Append UTMs ao link de destino
+        var link = document.getElementById('cta-' + position);
+        if (!link) return;
+        var baseUrl = link.getAttribute('href');
+        var utmParams = [];
+        ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k) {
+            var v = localStorage.getItem(k);
+            if (v) utmParams.push(k + '=' + encodeURIComponent(v));
+        });
+        // Adicionar fbclid se existir
+        var fbclid = localStorage.getItem('fbclid');
+        if (fbclid) utmParams.push('fbclid=' + encodeURIComponent(fbclid));
+
+        if (utmParams.length > 0) {
+            var sep = baseUrl.indexOf('?') > -1 ? '&' : '?';
+            link.setAttribute('href', baseUrl + sep + utmParams.join('&'));
+        }
+    }
+    </script>
+
+</body>
+</html>
