@@ -79,7 +79,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 120px 0 40px;
+            padding: 40px 0;
         }
 
         .hero-content-inner {
@@ -89,21 +89,12 @@
             gap: 20px;
         }
 
-        .hero-logo-area {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 41%;
-            padding: 30px;
-            background-image: url('img/group-18.png');
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: auto;
-            z-index: 2;
+        .hero-logo {
+            margin-bottom: 10px;
         }
 
-        .hero-logo-area img {
-            width: 60%;
+        .hero-logo img {
+            width: 55%;
             height: auto;
         }
 
@@ -398,21 +389,14 @@
                 flex-direction: column;
             }
 
-            .hero-logo-area {
-                position: relative;
-                width: 100%;
-                padding: 20px 20px 0;
-                background: none;
-            }
-
-            .hero-logo-area img {
-                width: 50%;
-            }
-
             .hero-content {
                 width: 100%;
                 padding: 30px 0 40px;
                 align-items: center;
+            }
+
+            .hero-logo img {
+                width: 60%;
             }
 
             .hero-content-inner {
@@ -498,12 +482,12 @@
 
     <!-- ===== HERO ===== -->
     <section class="hero">
-        <div class="hero-logo-area">
-            <img src="img/logo-full.svg" alt="Parcela Diaria" loading="eager">
-        </div>
         <div class="hero-inner">
             <div class="hero-content">
                 <div class="hero-content-inner">
+                    <div class="hero-logo">
+                        <img src="img/logo-full.svg" alt="Parcela Diaria" loading="eager">
+                    </div>
                     <h1>Credito rapido para motoristas de app e motoboys</h1>
                     <p class="hero-subtitle">CREDITO COM PAGAMENTO DIARIO DE SEGUNDA A SABADO! APROVEITE!</p>
                     <div class="app-logos">
